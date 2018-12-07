@@ -11,6 +11,6 @@ module.exports = {
             ['/InteractionModels', '交互模型'],
         ],
         sidebarDepth: 1,
-        lastUpdated: '最后更新于：'
+        lastUpdated: '最后更新于'
     }
 };
