@@ -8,6 +8,9 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
+  "dependencies": {
+    "vuepress": "0.14.8"
+  },
   "keywords": [],
   "author": "MeFelixWang <867087554@qq.com>",
   "license": "ISC"
