@@ -1,0 +1,14 @@
+{
+  "name": "flutter-manual",
+  "version": "1.0.0",
+  "description": "A Chinese manual for flutter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "keywords": [],
+  "author": "MeFelixWang <867087554@qq.com>",
+  "license": "ISC"
+}
