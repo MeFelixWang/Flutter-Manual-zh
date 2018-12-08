@@ -1,6 +1,9 @@
 module.exports = {
     base:'/Flutter-Manual-zh/',
     title: 'Flutter 中文手册',
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.png' }]
+    ],
     description: 'Flutter 中文手册',
     themeConfig: {
         nav: [
