@@ -7,8 +7,9 @@ module.exports = {
             {text: '首页', link: '/'}
         ],
         sidebar: [
-            ['docs/Widgets', '组件'],
-            ['docs/InteractionModels', '交互模型'],
+            ['/','说明'],
+            ['/Widgets', '组件'],
+            ['/InteractionModels', '交互模型'],
         ],
         sidebarDepth: 1,
         lastUpdated: '最后更新于'

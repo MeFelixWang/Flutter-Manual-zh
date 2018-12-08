@@ -10,5 +10,8 @@
   },
   "keywords": [],
   "author": "MeFelixWang <867087554@qq.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
