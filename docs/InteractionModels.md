@@ -78,7 +78,13 @@ Material design 应用通常会对触摸作出具有墨水飞溅效果的反应�
 | onHorizontalDragEnd | 先前与屏幕接触并且水平移动的指针不再与屏幕接触，并且当它停止接触屏幕时以特定速度移动的回调函数 |
 | onHorizontalDragStart | 指针已接触屏幕并开始水平移动时的回调函数 |
 | onHorizontalDragUpdate | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onHorizontalDragUpdate | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onLongPress | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onLongPressUp | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onPanCancel | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onPanDown | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onPanEnd | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onPanStart | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onPanUpdate | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
 
 ## DragTarget
 
