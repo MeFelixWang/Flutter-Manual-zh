@@ -73,18 +73,54 @@ Material design 应用通常会对触摸作出具有墨水飞溅效果的反应�
 | child | 包含的子组件 | 
 | excludeFromSemantics | 是否从语义树中排除这些手势。例如，长按显示 tooltip 被排除了，因为在语义树中 tooltip 自身已经包含了，因此如果手势中再去显示则会造成信息重复 | 
 | onDoubleTap | 用户快速双击屏幕上相同位置两次时的回调函数 |
-| onHorizontalDragCancel | 之前触发  [onHorizontalDragDown]() 的指针未完成时的回调函数 |
+| onHorizontalDragCancel | 之前触发 onHorizontalDragDown 的指针未完成时的回调函数 |
 | onHorizontalDragDown | 指针已接触屏幕，可能开始水平移动的回调函数 |
 | onHorizontalDragEnd | 先前与屏幕接触并且水平移动的指针不再与屏幕接触，并且当它停止接触屏幕时以特定速度移动的回调函数 |
 | onHorizontalDragStart | 指针已接触屏幕并开始水平移动时的回调函数 |
 | onHorizontalDragUpdate | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onLongPress | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onLongPressUp | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onPanCancel | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onPanDown | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onPanEnd | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onPanStart | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
-| onPanUpdate | 与屏幕接触并水平移动的指针在水平方向上移动时的回调函数 |
+| onLongPress | 指针长时间保持与屏幕相同位置接触时的回调函数 |
+| onLongPressUp | 触发长按的指针已停止接触屏幕时的回调函数 |
+| onPanCancel | 先前触发 onPanDown 的指针未完成时的回调函数 |
+| onPanDown | 指针已接触屏幕并可能开始移动时的回调函数 |
+| onPanEnd | 先前与屏幕接触并移动的指针不再与屏幕接触，并且当它停止接触屏幕时以特定速度移动的回调函数 |
+| onPanStart | 指针已经接触屏幕并开始移动时的回调函数 |
+| onPanUpdate | 与屏幕接触并移动的指针再次移动时的回调函数 |
+| onScaleEnd | 指针不再与屏幕接触时的回调函数 |
+| onScaleStart | 与屏幕接触的指针已建立焦点，且初始比例为 1.0 时的回调函数 |
+| onScaleUpdate | 与屏幕接触的指针指示了新的焦点和/或缩放时的回调函数 |
+| onTap | 点击时的回调函数 |
+| onTapCancel | 先前触发 onTapDown 的指针不会导致点击时的回调函数 |
+| onTapDown | 可能导致点击的指针已在特定位置与屏幕接触时的回调函数 |
+| onTapUp | 将触发敲击的指针已停止在特定位置与屏幕接触时的回调函数 |
+| onVerticalDragCancel | 先前触发 onVerticalDragDown 的指针未完成时的回调函数 |
+| onVerticalDragDown | 指针已接触屏幕，可能会开始垂直移动时的回调函数 |
+| onVerticalDragEnd | 之前与屏幕接触并垂直移动的指针不再与屏幕接触，并且在停止接触屏幕时以特定速度移动的回调函数 |
+| onVerticalDragStart | 指针已接触屏幕并已开始垂直移动时的回调函数 |
+| onVerticalDragUpdate | 与屏幕接触并垂直移动的指针在垂直方向上移动时的回调函数 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
 
 ## DragTarget
 
+释放 [Draggable](#Draggable) 时可以接收其数据。
+
+当拖动 Draggable 到 DragTarget 上时，将询问 DragTarget 是否接收 Draggable 所携带的数据。如果用户确实将 Draggable 放在 DragTarget 上（并且 DragTarget 已指明它将接收 Draggable 的数据），则要求 DragTarget 接收 Draggable 的数据。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| builder | 用于构建此组件的内容 |
+| onAccept | 当在此组件上放置可接收的数据时的回调函数 |
+| onLeave | 当在此组件上拖动的给定数据离开时的回调函数 |
+| onWillAccept | 确定是否接收拖入此组件上的组件的给定数据 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
