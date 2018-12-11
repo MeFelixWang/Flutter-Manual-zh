@@ -14,7 +14,7 @@
 | ------ | ------ |
 | affinity | 控制此组件如何与其他手势竞争以启动拖动 |
 | axis | 如果指定，则限制拖动的轴向 | 
-| child | 包含的子组件 | 
+| child | 子组件 | 
 | childWhenDragging | 拖动时显示的组件 | 
 | data | 携带的数据 | 
 | dragAnchor | 拖动时如何锚定此组件的位置 | 
@@ -36,7 +36,7 @@
 | hapticFeedbackOnStart | 是否在拖动开始时触发触觉反馈 |
 | affinity | 控制此组件如何与其他手势竞争以启动拖动 |
 | axis | 如果指定，则限制拖动的轴向 | 
-| child | 包含的子组件 | 
+| child | 子组件 | 
 | childWhenDragging | 拖动时显示的组件 | 
 | data | 携带的数据 | 
 | dragAnchor | 拖动时如何锚定此组件的位置 | 
@@ -70,7 +70,7 @@ Material design 应用通常会对触摸作出具有墨水飞溅效果的反应�
 | 属性 | 功能 |
 | ------ | ------ |
 | behavior | 在命中测试期间，此手势检测器应如何表现 |
-| child | 包含的子组件 | 
+| child | 子组件 | 
 | excludeFromSemantics | 是否从语义树中排除这些手势。例如，长按显示 tooltip 被排除了，因为在语义树中 tooltip 自身已经包含了，因此如果手势中再去显示则会造成信息重复 | 
 | onDoubleTap | 用户快速双击屏幕上相同位置两次时的回调函数 |
 | onHorizontalDragCancel | 之前触发 onHorizontalDragDown 的指针未完成时的回调函数 |
@@ -124,3 +124,74 @@ Material design 应用通常会对触摸作出具有墨水飞溅效果的反应�
 | 名称 | 功能 |
 | ------ | ------ |
 | createState | 在树中的给定位置为此组件创建可变状态 |
+
+## Dismissible
+
+在指定方向上拖动时可以移除的组件。
+
+在 DismissDirection 中拖动或滑动此组件将使其 child 滑出视图。跟随滑动动画，如果 resizeDuration 不为 null，则此组件将其高度（与移除方向垂直时为宽度，）以动画的形式从 resizeDuration 减至 0。
+
+background 可以实现“遗留”效果。如果指定了 background，则它会堆叠在 Dismissible 的 child 之后，并在 child 移动时显露出来。
+
+此组件在其大小折叠为 0（如果 resizeDuration 非 null）之后或在滑动动画之后立即（如果 resizeDuration 为 null）调用 onDismissed 回调函数。如果 Dismissible 是一个列表项，它必须有一个键以区别于其他项，并且它的 onDismissed 回调函数必须从列表中删除该项。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| background | 放在 child 后面的组件。如果还指定了secondaryBackground，则只有在向下或向右拖动 child 时才会显示此组件。 |
+| child | 子组件 |
+| crossAxisEndOffset | 定义在卡片被移除后主轴上的结束偏移量 |
+| direction | 可以移除组件的方向 |
+| dismissThresholds | 移除组件所需的偏移阈值 |
+| movementDuration | 定义移除卡片（或如果不移除返回原始位置）的持续时间 |
+| onDismissed | 完成大小调整后，在组件被移除时的回调函数 |
+| onResize | 组件大小改变（被移除之前）时的回调函数 |
+| resizeDuration | onDismissed 调用之前持续的总时间 |
+| secondaryBackground | 堆叠在 child 后面，当 child 被向上或向左拖动时会显露出来。只有在指定了 background 时才可以指定它 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+
+## IgnorePointer
+
+在命中测试期间不可见的组件。
+
+如果 ignoring 为 true，则此组件（及其子树）对于命中测试是不可见的。它仍然会在布局过程中消耗空间并像往常一样绘制 child。它只是不能成为定位事件的目标，因为它从 RenderBox.hitTest 返回 false。
+
+当 ignoringSemantics 为 true 时，子树对于语义层是不可见的（因此，例如可访问性工具）。如果 ignoringSemantics 为 null，则它使用 ignoring 的值。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| ignoring | 命中检测期间是否忽略此组件 |
+| ignoringSemantics | 编译语义树时是否忽略此组件的语义 |
+| child | 子组件 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createRenderObject | 使用此 RenderObjectWidget 描述的配置创建此 RenderObjectWidget 表示的 RenderObject 的实例 |
+| debugFillProperties | 添加与节点关联的额外属性 |
+| updateRenderObject | 将此 RenderObjectWidget 描述的配置复制到给定的 RenderObject，该类型与此对象的 createRenderObject 返回的类型相同 |
+
+## AbsorbPointer
+
+在命中测试期间吸收指针的组件。
+
+当 absorbing 为 true 时，此组件通过终止命中测试来阻止其子树接收指针事件。它仍然会在布局过程中消耗空间并像往常一样绘制 child。它只是阻止其子节点成为定位事件的目标，因为它从 RenderBox.hitTest 返回 true。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| absorbing | 命中检测期间是否吸收指针 |
+| ignoringSemantics | 编译语义树时是否忽略此组件的语义 |
+| child | 子组件 |
+
+## Scrollable 
