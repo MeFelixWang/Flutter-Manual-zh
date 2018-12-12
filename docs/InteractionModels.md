@@ -195,3 +195,35 @@ background 可以实现“遗留”效果。如果指定了 background，则它�
 | child | 子组件 |
 
 ## Scrollable 
+
+可以滚动的组件。
+
+Scrollable 实现可滚动组件的交互模型，包括手势识别，但没有关于如何构造实际显示子组件的视口的信息。
+
+很难直接构造 Scrollable。请考虑使用 [ListView]() 或 [GridView]()，它们结合了滚动，视口和布局模型。要组合布局模型（或使用自定义布局模式），请考虑使用  [CustomScrollView]()。
+
+静态 Scrollable.of 和 Scrollable.ensureVisible 函数通常用于与 [ListView]() 或 [GridView]() 中的 Scrollable 组件进行交互。
+
+要使用 Scrollable 进一步自定义滚动行为：
+
+1. 你可以提供 viewportBuilder 来自定义子模型。例如，[SingleChildScrollView]() 使用显示单个 box 子视图的视口，而 [CustomScrollView]() 使用 [Viewport]() 或 [ShrinkWrappingViewport]()，两者都显示 slivers 列表。
+  
+2. 你可以提供自定义 [ScrollController]()，以创建自定义 [ScrollPosition]() 子类。例如，[PageView]() 使用 [PageController]()，它创建一个面向页面的滚动位置子类，以在 Scrollable 调整大小时保持同一页面可见。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| axis | 滚动视图的滚动轴向 |
+| axisDirection | 组件的滚动方向 |
+| controller | 可用于控制滚动此组件位置的对象 |
+| excludeFromSemantics | 此 Scrollable 引入的滚动操作是否在语义树中显露 |
+| physics | 组件应如何响应用户输入 |
+| viewportBuilder | 构建可通过其显示可滚动内容的视口 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+| debugFillProperties | 添加与节点关联的额外属性 |
