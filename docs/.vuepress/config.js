@@ -13,6 +13,7 @@ module.exports = {
             ['/','说明'],
             ['/Widgets', '组件'],
             ['/InteractionModels', '交互模型'],
+            ['/Cupertino', 'iOS 风格组件'],
         ],
         sidebarDepth: 1,
         lastUpdated: '最后更新于'
