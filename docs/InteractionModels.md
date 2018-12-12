@@ -1,6 +1,6 @@
 ## Draggable
 
-可以在[DragTarget](#dragtarget)中拖动的组件。
+可以在 [DragTarget](#dragtarget) 中拖动的组件。
 
 当一个可拖动组件发生拖动时，它会显示一个在屏幕上跟踪用户手指的 feedback 组件。如果用在 [DragTarget](#dragtarget) 组件上抬起手指，则该 [DragTarget](#dragtarget) 可以选择接收 Draggable 组件携带的数据。
 
