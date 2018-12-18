@@ -113,9 +113,58 @@ iOS 风格的按钮。
 
 ![CupertinoDatePicker](https://flutter.io/images/widget-catalog/cupertino-date-picker.png)
 
+iOS 风格的日期选择器组件。
+
+[CupertinoDatePickerMode]() 中列出了几种日期选择器模式。
+
+该类将其子组件显示为连续列。其子组件的规则以国际化为基础。
+
+日期模式中的选择器示例：
+
+- US-English: July | 13 | 2012
+- Vietnamese: 13 | Tháng 7 | 2012
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| initialDateTime | 选择器的初始日期和（或）时间。默认为当前日期和时间，不得为 null。当前必须符合 [minimumDate]()，[maximumDate]()，[minimumYear]() 和 [maximumYear]() 中设置的间隔 |
+| maximumDate | 在 CupertinoDatePickerMode.dateAndTime 模式下，选择器可以滚动到的最大日期 。如果没有限制，则为 null |
+| maximumYear | 在 CupertinoDatePickerMode.date 模式下，选择器可以滚动到的最大年份 。如果没有限制，则为 null |
+| minimumDate | 在 CupertinoDatePickerMode.dateAndTime 模式下，选择器可以滚动到的最小日期 。如果没有限制，则为 null |
+| minimumYear | 在 CupertinoDatePickerMode.date 模式下，选择器可以滚动到的最小年份 。默认为 1，不得为 null |
+| minuteInterval | 如果它在当前模式下显示，则为分钟微调器的粒度。必须是 60 的整数因子 |
+| mode | 日期选择器的模式，为 [CupertinoDatePickerMode]() 之一。默认为 CupertinoDatePickerMode.dateAndTime。不能为 null 且初始构建后值不能更改。 |
+| onDateTimeChanged | 当所选日期和（或）时间发生变化时的回调函数。不能为 null |
+| use24hFormat | 是否使用24小时格式。默认为 false |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+
 ## CupertinoDialog
 
 ![CupertinoDialog](https://flutter.io/images/widget-catalog/cupertino-dialog.png)
+
+iOS 风格的对话框。
+
+此对话框组件对对话框的内容没有任何意见。不要直接使用这个组件，而应考虑使用 [CupertinoAlertDialog]()，它实现了一种特定的对话框。
+
+使用 [CupertinoTabScaffold]() 时与 Navigator.of(..., rootNavigator: true) 一起使用， 以确保对话框出现在选项卡上方。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| child | 子组件 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
 
 ## CupertinoDialogAction
 
@@ -176,3 +225,25 @@ iOS 风格的按钮。
 ## CupertinoTimerPicker
 
 ![CupertinoTimerPicker](https://flutter.io/images/widget-catalog/cupertino-timer-picker.png)
+
+iOS 风格的倒计时时间选择器。
+
+此选择器显示小时，分钟和秒旋转器的倒计时持续时间。持续时间在 0 到 23 小时 59 分 59 秒之间。
+
+[CupertinoTimerPickerMode]() 中列出了几种计时器选择器模式。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| initialTimerDuration | 倒计时器的初始持续时间 |
+| minuteInterval | 分钟微调器的粒度。必须是 60 的整数因子 |
+| mode | 计时器选择器的模式 |
+| onTimerDurationChanged | 计时器持续时间改变时的回调函数 |
+| secondInterval | 第二个微调器的粒度。必须是 60 的整数因子 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
