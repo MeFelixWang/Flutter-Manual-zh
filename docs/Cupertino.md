@@ -170,29 +170,161 @@ iOS 风格的对话框。
 
 ![CupertinoDialogAction](https://flutter.io/images/widget-catalog/cupertino-dialog-action.png)
 
+通常用于 [CupertinoAlertDialog]() 的按钮。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| child | 子组件 |
+| enabled | 启用或禁用按钮。默认情况下禁用按钮。要启用按钮，将其 onPressed 属性设为非 null 值 |
+| isDefaultAction | 如果按钮是对话框中的默认选项，则设置为 true |
+| isDestructiveAction | 此动作是否会销毁一个对象 |
+| onPressed | 点击或以其他方式激活按钮时的回调函数 |
+| textStyle | 应用于此按钮中的任何文本的 TextStyle |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
+
 ## CupertinoFullscreenDialogTransition
 
 ![CupertinoFullscreenDialogTransition](https://flutter.io/images/widget-catalog/cupertino-fullscreen-dialog-transition.png)
+
+用于唤起全屏对话框的 iOS 风格的过渡动画。
+
+例如，通过从底部引入下一个屏幕来创建新日历事件时使用。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| child | 子组件 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
 
 ## CupertinoPageScaffold
 
 ![CupertinoPageScaffold](https://flutter.io/images/widget-catalog/cupertino-page-scaffold.png)
 
+实现了单个 iOS 应用程序页面的布局。
+
+脚手架在顶部布置导航栏，在导航栏之间或之后布置内容。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| backgroundColor | 作为整个脚手架基础的组件的颜色 |
+| child | 子组件 |
+| navigationBar | 通常是 [CupertinoNavigationBar]()，绘制在屏幕的顶部 |
+| resizeToAvoidBottomInset | 子组件是否应该自己调整大小以避免窗口的底部插入 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
+
 ## CupertinoPageTransition
 
 ![CupertinoPageTransition](https://flutter.io/images/widget-catalog/cupertino-page-transition.png)
+
+提供 iOS 样式的页面过渡动画。
+
+页面从右侧滑入，然后反向退出。当另一页进入以覆盖它时，它也以视差运动向左移动。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| child | 子组件 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
 
 ## CupertinoPicker
 
 ![CupertinoPicker](https://flutter.io/images/widget-catalog/cupertino-picker.png)
 
+iOS 风格的选择器。
+
+在转轮上显示其子组件以供选择，并在当前所选项目更改时调用回调函数。
+
+可以与 [showModalBottomSheet]() 一起使用，以在屏幕底部以模态方式显示选择器。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| backgroundColor | 子组件背后的背景颜色 |
+| childDelegate | 一个懒实例化子组件的委托 |
+| diameterRadio | 此拾取器高度与模拟圆柱直径之间的相对比率 |
+| itemExtent | 所有子组件的统一高度 |
+| magnification | 如果使用的话，则表示放大镜的放大比率 |
+| offAxisFraction | 转轮偏离水平偏心多少，宽度的一小部分。此属性创建了从侧面观察垂直轮的视觉效果，其中边缘处的消失点向一侧弯曲而不是正面观察车轮 |
+| onSelectedItemChanged | 当前居中的项目更改时的回调函数（可选） |
+| scrollController | 一个 [FixedExtentScrollController]() 读取和控制当前项目 |
+| useMagnifier | 是否将放大镜用于转轮中心的项目 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+
 ## CupertinoPopupSurface
 
 ![CupertinoPopupSurface]()
 
+圆角矩形表面，看起来像 iOS 弹出表面，例如警报对话框和操作表。
+
+CupertinoPopupSurface 可以配置是否在它模糊区的上面涂上白色。典型用法应在模糊之上涂上白色。但是，可以禁用白色涂料，以便为更复杂的布局渲染分隔线间隙，例如 [CupertinoAlertDialog]()。此外，可以禁止涂上白色来渲染没有任何颜色的模糊圆角矩形（类似于 iOS 的音量控制弹出窗口）。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| child | 子组件 |
+| isSurfacePainted | 是否在这个表面的模糊背景上涂上半透明的白色。对于包含没有任何分隔符的内容的典型弹出窗口 isSurfacePainted 应为 true。需要分隔符的弹出窗口应将 isSurfacePainted 设置为 false，然后绘制自己的表面区域 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
+
 ## CupertinoSegmentedControl
 
 ![CupertinoSegmentedControl](https://flutter.io/images/widget-catalog/cupertino-segmented-control.png)
+
+iOS 风格的分段控件。
+
+在水平列表中显示 children 提供的组件。用于在多个互斥选项之间进行选择。当选中分段控件中的一个选项时，将不再选中分段控件中的其他选项。
+
+分段控件的 children 中的值可以为任何组件。类型 T 是用于标识每个组件并确定选中了哪个组件的键的类型。根据Map 类的要求，键必须是一致的类型，并且必须具有可比性。键的排序将决定分段控件中组件的顺序。
+
+当分段控件的状态发生更改时，此组件将调用 onValueChanged 回调函数。在 onValueChanged 回调函数中返回与新选中的组件关联的 key。通常，使用分段控件的组件将监听 onValueChanged 回调函数并使用新的 groupValue 重建分段控件以更新当前选中的选项。
+
+children 将按 Map 中键的顺序显示。分段控件的高度由 children
+中最高的组件的高度确定。除非子项的组合宽度大于可用的水平空间，否则分段控件中每个子项的宽度将等于最宽子项的宽度。在这种情况下，可用的水平空间会除以 children 的数量，以确定每个组件的宽度。children 中 每个组件的选择区域将扩展至充满计算的空间，因此每个组件看起来都具有相同的尺寸。
+
+可以选择使用自定义颜色创建分段控件。unselectedColor，selectedColor，borderColor 和 pressedColor 参数可用于将分段控件 CupertinoColors.activeBlue 和 CupertinoColors.white 改为自定义配置。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| borderColor | 每个组件周围边框的颜色 |
 
 ## CupertinoSlider
 
