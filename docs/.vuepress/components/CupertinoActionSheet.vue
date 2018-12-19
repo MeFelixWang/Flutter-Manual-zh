@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import ExampleLayout from './ExampleLayout';
+    import ExampleLayout from './layout/ExampleLayout';
 
     export default {
         name: "CupertinoActionSheet",
