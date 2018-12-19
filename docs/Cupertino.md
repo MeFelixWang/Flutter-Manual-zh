@@ -325,18 +325,123 @@ children 将按 Map 中键的顺序显示。分段控件的高度由 children
 | 属性 | 功能 |
 | ------ | ------ |
 | borderColor | 每个组件周围边框的颜色 |
+| children | 分段控件中的标识键和相应的组件 |
+| groupValue | 当前选中的组件的标识符 |
+| onValueChanged | 点击新选项时的回调函数 |
+| pressedColor | 用于填充用户通过长按或拖动临时与之交互的组件的背景颜色 |
+| selectedColor | 用于填充选中项的背景颜色以及未选中项的文本颜色 |
+| unselectedColor | 用于填充未选中项的背景颜色，以及选中组件的文本颜色 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
 
 ## CupertinoSlider
 
 ![CupertinoSlider](https://flutter.io/images/widget-catalog/cupertino-slider.png)
 
+iOS 风格的滑块。
+
+用于从一系列值中进行选择。
+
+滑块可用于从连续或离散值集中进行选择。默认值是使用从 min 到 max 的连续值范围。要使用离散值，请将 divisions 设为非 null 值，这表示离散间隔的数量。例如，如果 min 为 0.0， max 为 50.0， divisions 为 5，则滑块可选离散值为 0.0,10.0,20.0,30.0,40.0 和 50.0。
+
+滑块本身不保持任何状态。相反，当滑块状态发生变化时，组件会调用 onChanged 回调函数。大多数使用滑块的组件将监听 onChanged 回调函数并使用新值重建滑块以更新滑块的视觉外观。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| activeColor | 滑块已选定部分的颜色 |
+| divisions | 离散分区的数量 |
+| max | 用户可以选择的最大值 |
+| min | 用户可以选择的最小值 |
+| onChanged | 当用户为滑块选择新值时的回调函数 |
+| onChangedEnd | 用户完成为滑块选择新值时的回调函数 |
+| onChangedStart | 当用户开始为滑块选择新值时的回调函数 |
+| value | 此滑块的当前选定值 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+| debugFillProperties | 添加与节点关联的额外属性 |
+
+
 ## CupertinoSwitch
 
 ![CupertinoSwitch](https://flutter.io/images/widget-catalog/cupertino-switch.png)
 
+iOS 风格的开关。
+
+用于切换单个设置的开/关状态。
+
+开关本身不保持任何状态。相反，当开关的状态发生变化时，组件会调用 onChanged 回调函数。大多数使用开关的组件将监听 onChanged 回调函数并使用新值重建开关以更新开关的可视外观。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| activeColor | 此开关打开时使用的颜色 |
+| onChanged | 当用户打开或关闭开关时的回调函数 |
+| value | 此开关是打开还是关闭 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+| debugFillProperties | 添加与节点关联的额外属性 |
+
 ## CupertinoNavigationBar
 
 ![CupertinoNavigationBar](https://flutter.io/images/widget-catalog/cupertino-nav-bar.png)
+
+iOS 风格的导航栏。
+
+导航栏是一个工具栏，最小由一个组件组成，通常是工具栏 middle 中的页面标题。
+
+它还支持在 middle 之前添加 leading 组件，在 middle 之后添加 trailing 组件，同时保持 middle 组件居中。
+
+如果没有为 leading 指定组件，且 automaticallyImplyLeading 为 true（默认为true），则leading 组件会自动为返回图标按钮（在全屏对话的情况下，为关闭按钮），以弹出当前路由。
+
+如果没有为 middle 指定组件，且 automaticallyImplyMiddle 为 true（默认为true），则 middle 组件会自动从目前 [CupertinoPageRoute]()的获取标题文本。
+
+它应放在屏幕顶部，并自动记录操作系统的状态栏。
+
+如果给定的 backgroundColor 的不透明度不是 1.0（默认情况下是这种情况），它将对其后面的内容产生模糊效果。
+
+当 transitionBetweenRoutes 为 true 时，如果正在转换的路径也具有 [CupertinoNavigationBar]() 或 [CupertinoSliverNavigationBar ]() 且 transitionBetweenRoutes 设置为 true，则此导航栏将在路径顶部而不是在其中进行转换。如果 transitionBetweenRoutes 为 true，则 Widget 参数都不能在其子树中包含键，因为该组件将同时存在于树中的多个位置。
+
+默认情况下， 每个 [PageRoute]() 中只应存在一个 [CupertinoNavigationBar]() 或 [CupertinoSliverNavigationBar]() 以支持默认转换。使用 transitionBetweenRoutes 或 heroTag 可以自定义每个路径的多个导航栏的过渡行为。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| actionsForegroundColor | 用于导航栏中 leading 和 trailing 组件的文本和图标的默认颜色 |
+| automaticallyImplyLeading | 控制当 leading 为 null 时是否应该尝试使用默认组件 |
+| automaticallyImplyMiddle | 控制当 middle 为 null 时是否应该尝试使用默认组件 |
+| backgroundColor | 导航栏的背景颜色。如果它包含透明度，标签栏将自动对其背后的内容产生模糊效果 |
+| border | 导航栏的边框。默认情况下，渲染单个像素底部边框 |
+| fullObstruction | 如果导航栏的背景颜色没有透明度，则为 true |
+| heroTag | 如果 transitionBetweenRoutes 为 true，则标记导航栏的 Hero 组件 |
+| leading | 放置在导航栏开头的组件。通常是正常页面的后退按钮或完整页面对话框的取消按钮 |
+| middle | 置在导航栏中间的组件。通常是标题或分段控件 |
+| padding | 导航栏内容的内边距 |
+| preferredSize | 如果它不受限制，则为此组件的预设尺寸 |
+| previousPageTitle | 自动隐含 leading 按钮时手动指定上一个路由的标题 |
+| trailing | 放置在导航栏末尾的组件。通常在页面上执行其他操作，例如搜索或编辑功能 |
+| transitionBetweenRoutes | 是否在导航栏之间转换 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
 
 ## CupertinoTabBar
 
