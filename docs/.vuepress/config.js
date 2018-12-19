@@ -7,7 +7,7 @@ module.exports = {
     description: 'Flutter 中文手册',
     themeConfig: {
         nav: [
-            {text: '首页', link: '/'}
+
         ],
         sidebar: [
             ['/','说明'],
@@ -16,6 +16,12 @@ module.exports = {
             ['/Cupertino', 'iOS 风格组件'],
         ],
         sidebarDepth: 1,
-        lastUpdated: '最后更新于'
+        lastUpdated: '最后更新于',
+        serviceWorker: {
+            updatePopup: {
+               message: "内容更新了！",
+               buttonText: "刷新"
+            }
+        }
     }
 };
