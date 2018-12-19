@@ -10,10 +10,15 @@
     "deploy": "gh-pages -d docs/.vuepress/dist",
     "deploy:build": "npm run docs:build && gh-pages -d docs/.vuepress/dist"
   },
-  "keywords": ["flutter","中文","手册"],
+  "keywords": [
+    "flutter",
+    "中文",
+    "手册"
+  ],
   "author": "MeFelixWang <867087554@qq.com>",
   "license": "ISC",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.0",
     "gh-pages": "^2.0.1"
   }
 }
