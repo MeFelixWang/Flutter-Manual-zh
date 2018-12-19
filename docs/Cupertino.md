@@ -447,17 +447,146 @@ iOS 风格的导航栏。
 
 ![CupertinoTabBar](https://flutter.io/images/widget-catalog/cupertino-tab-bar.png)
 
+iOS 风格的底部导航标签栏。
+
+使用 [BottomNavigationBarItem]() 显示多个选项卡，其中一个选项卡处于活动状态，默认情况下为第一个选项卡。
+
+此 StatelessWidget 不存储活动选项卡本身。你必须监听 onTap 回调函数并在 currentIndex 改变时调用 `setState` 重新映射。
+
+根据标准 iOS 设计，选项卡更改通常会触发 [Navigator]() 之间的切换，每个 [Navigator]() 都有自己的导航堆栈。
+
+如果给定的 backgroundColor 的不透明度不是 1.0（默认情况下是这种情况），它将对其后面的内容产生模糊效果。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| activeColor | 选定状态的 [BottomNavigationBarItem]() 的图标和标题的前景色 |
+| backgroundColor | 标签栏的背景颜色。如果它包含透明度，标签栏将自动对其背后的内容产生模糊效果 |
+| border | [CupertinoTabBar]() 的边框 |
+| currentIndex | 当前的活动项的索引 |
+| iconSize | 所有 [BottomNavigationBarItem]() 图标的大小 |
+| inactiveColor | 处于未选定状态的 [BottomNavigationBarItem]() 的图标和标题的前景色 |
+| items | 位于底部导航栏中的交互式项目 |
+| onTap | 点击项目时的回调函数 |
+| opaque | 如果标签栏的背景颜色没有透明度，则为 true |
+| preferredSize | 如果它不受限制，则为此组件的预设尺寸 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
+| copyWith | 创建当前 [CupertinoTabBar]() 的副本，但提供的参数已被覆盖 |
+
 ## CupertinoTabScaffold
 
 ![CupertinoTabScaffold](https://flutter.io/images/widget-catalog/cupertino-tab-scaffold.png)
+
+实现选项卡式 iOS 应用程序的根布局和行为结构。
+
+脚手架构建了底部的标签栏和标签栏之间或之后的内容。
+
+必须有 tabBar 和 tabBuilder。CupertinoTabScaffold 会自动监听提供 [CupertinoTabBar]() 的点击回调函数更改活动标签。
+
+选项卡的内容是使用活动选项卡索引处提供的 tabBuilder 构建的。该 tabBuilder 必须能够建立相同数量的网页，因为有 tabBar.items。非活动选项卡将移至 Offstage， 并禁用其动画。
+
+使用 [CupertinoTabView]() 作为每个选项卡的内容，以支持具有并行导航状态和历史记录的选项卡。
+
+在以上所有选项卡而不是当前选中的一个内（例如，在此脚手架的顶部显示对话时）跳转路由时，在 [CupertinoTabView]() 的 BuildContext 内部使用 *Navigator.of(rootNavigator: true)*。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| tabBar | tabBar 是一个 [CupertinoTabBar]()，绘制在屏幕底部，让用户在主内容区域在不同的选项卡之间切换 |
+| tabBuilder | 一个 [IndexedWidgetBuilder]()，选项卡变为活动状态时调用 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
 
 ## CupertinoTabView
 
 ![CupertinoTabView](https://flutter.io/images/widget-catalog/cupertino-tab-view.png)
 
+单个选项卡视图，具有自己的 Navigator 状态和历史记录。
+
+用作 [CupertinoTabScaffold]() 中每个选项卡内容的典型选项卡视图，其中具有并行导航状态和历史记录的多个选项卡可以共存。
+
+CupertinoTabView 配置顶级 Navigator 以按以下顺序搜索路由：
+
+1. 对于 `/` 路径，使用 builder 属性（如果非 null）。
+2. 否则，如果有路由入口，使用 routes 表（包括 `/`，如果没有指定 builder）。
+3. 否则，调用 onGenerateRoute（如果提供）。对于未由 builder 和 routes 处理的任何**有效**路由，它应返回非空值。
+3. 最后，如果所有其他方法都失败则调用 onUnknownRoute。
+
+这些导航属性不与任何同级 CupertinoTabView 共享， 也不与任何祖先或后代 [Navigator]() 实例共享。
+
+要在 CupertinoTabView 上层而不是在其内部切换路由（例如在所有选项卡上显示对话框时），请使用 *Navigator.of(rootNavigator: true)*。
+
 ## CupertinoTextField
 
 ![CupertinoTextField](https://flutter.io/images/widget-catalog/cupertino-textfield.png)
+
+iOS 风格的文本字段。
+
+文本字段允许用户使用硬件键盘或屏幕键盘输入文本。
+
+此组件对应于 iOS 上的 *UITextField* 和可编辑的 *UITextView*。
+
+只要用户更改字段中的文本，文本字段就会调用 onChanged 回调函数。如果用户指示他们已完成在字段中键入（例如，通过按下软键盘上的按钮），则文本字段会调用 onSubmitted 回调函数。
+
+要控制文本字段中显示的文本，请使用 controller。例如，要设置文本字段的初始值，请使用已包含某些文本的 controller。
+
+controller 还可以控制选择并组成区域（观察文本更改，选择，并组成区域）。
+
+文本字段具有可覆盖的 decoration，默认情况下，在文本字段周围绘制圆角矩形边框。如果将 decoration 属性设置为 null，则将完全删除装饰。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| autocorrect | 是否启用自动更正 |
+| autofocus | 如果没有其他内容已经获得焦点，这个文本字段是否应该获得焦点 |
+| clearButtonMode | 显示 iOS 样式的清除按钮以清除当前文本条目 |
+| controller | 控制正在编辑的文本 |
+| cursorColor | 绘制光标时使用的颜色 |
+| cursorRadius | 光标的圆角半径 |
+| cursorWidth | 光标厚度 |
+| decoration | 控制文本输入后面框的 [BoxDecoration]() |
+| enabled | false 时禁用文本字段 |
+| focusNode | 控制此组件是否具有键盘焦点 |
+| inputFormatters | 可选的输入验证和格式覆盖 |
+| keyboardAppearance | 键盘的外观 |
+| keyboardType | 用于编辑文本的键盘类型 |
+| maxLength | 文本字段中允许的最大字符数（Unicode 标量值） |
+| maxLengthEnforced | 如果为 true，则阻止该字段允许超过 maxLength 个字符 |
+| maxLines | 文本要跨越的最大行数，必要时换行 |
+| obscureText | 是否隐藏正在编辑的文本（例如，用于密码） |
+| onChanged | 当正在编辑的文本发生更改时的回调函数 |
+| onEditingComplete | 当用户提交可编辑内容时的回调函数（例如，用户按下键盘上的“完成”按钮） |
+| onSubmitted | 当用户指示他们已完成编辑字段中的文本时的回调函数 |
+| padding | 当 clearButtonMode 不是永远时 ，在 prefix 和suffix 之间的文本输入区域或清除按钮周围的内边距 |
+| placeholder  | 当文本条目为空时，出现在文本字段第一行的浅色占位符提示 |
+| prefix  | 在文本之前显示的可选 Widget |
+| prefixMode  | 当 prefix 参数不为 null 时，根据文本条目的状态 控制 prefix 组件的可见性 |
+| scrollPadding  | 当 Textfield 滚动到视图中时，将填充配置到 Scrollable 周围的边缘 |
+| style  | 用于正在编辑的文本的样式 |
+| suffix  | 在文本之后显示的可选 Widget |
+| suffixMode  | 当 suffix 参数不为 null 时，根据文本条目的状态 控制 suffix 组件的可见性 |
+| textAlign  | 文本应如何水平对齐 |
+| textCapitalization  | 配置平台键盘如何选择大写或小写键盘 |
+| textInputAction  | 用于键盘的操作按钮类型 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+| debugFillProperties | 添加与节点关联的额外属性 |
 
 ## CupertinoTimerPicker
 
