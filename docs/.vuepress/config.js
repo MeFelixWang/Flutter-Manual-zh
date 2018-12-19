@@ -17,8 +17,15 @@ module.exports = {
         lastUpdated: '最后更新于',
         serviceWorker: {
             updatePopup: {
-                message: "内容更新了！",
+                message: "发现新内容",
                 buttonText: "刷新"
+            }
+        }
+    },
+    configureWebpack: {
+        resolve: {
+            alias: {
+                '@': 'public',
             }
         }
     },

@@ -1,7 +1,14 @@
 <template>
     <div class="example">
         <div class="example-code">
-            <slot name="code"></slot>
+            <div class="example-code-text" ref="code">
+                ceshi
+                <slot name="code"></slot>
+            </div>
+            <button type="button" @click="copyCode">
+                复制
+                <!--<img src="~public/copy.svg" alt="">-->
+            </button>
         </div>
         <div class="example-img">
             <slot name="img"></slot>
@@ -11,7 +18,15 @@
 
 <script>
     export default {
-        name: "ExampleLayout"
+        name: "ExampleLayout",
+        methods: {
+            //复制代码
+            copyCode() {
+                console.log(this.$refs.code);
+                let code = this.$refs.code;
+                document.execCommand(code.innerText);
+            }
+        }
     }
 </script>
 
