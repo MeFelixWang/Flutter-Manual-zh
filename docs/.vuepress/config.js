@@ -10,6 +10,7 @@ module.exports = {
         sidebar: [
             ['/', '说明'],
             ['/Widgets', '组件'],
+            ['/AnimationAndMotion', '动画'],
             ['/InteractionModels', '交互模型'],
             ['/Cupertino', 'iOS 风格组件'],
         ],
