@@ -31,6 +31,25 @@ iOS 风格的操作表。
 | ------ | ------ |
 | build | 构建此组件的 UI |
 
+## CupertinoActionSheetAction
+
+通常用于 [CupertinoActionSheet](#CupertinoActionSheet) 的按钮。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| child | 子组件 |
+| isDefaultAction | 此操作是否是操作表中的默认选项 |
+| isDestructiveAction | 此操作是否可能更改或删除数据 |
+| onPressed | 点击按钮时的回调函数 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| build | 构建此组件的 UI |
+
 ## CupertinoActivityIndicator
 
 ![CupertinoActivityIndicator](https://flutter.io/images/widget-catalog/cupertino-activity-indicator.png)
@@ -79,6 +98,14 @@ iOS 风格的警报对话框。
 | 名称 | 功能 |
 | ------ | ------ |
 | build | 构建此组件的 UI |
+
+## CupertinoApp
+
+使用 Cupertino 设计的应用程序。
+
+一个便捷组件，它包含了 iOS 设计目标应用程序通常需要的许多组件。它建立在以 iOS 为默认值的 [WidgetsApp]()上，如字体和滚动物理。
+
+
 
 ## CupertinoButton
 
