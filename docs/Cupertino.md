@@ -527,6 +527,23 @@ CupertinoTabView 配置顶级 Navigator 以按以下顺序搜索路由：
 
 要在 CupertinoTabView 上层而不是在其内部切换路由（例如在所有选项卡上显示对话框时），请使用 *Navigator.of(rootNavigator: true)*。
 
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| builder | 此组件默认路由的组件构建器（[Navigator.defaultRouteName]()，即 `/`） |
+| defaultTitle | 默认路由的标题 |
+| navigatorObservers | 此组件中 [Navigator]() 的观察者列表 |
+| onGenerateRoute | 此组件导航到具名路由时使用的路由生成器回调函数 |
+| onUnknownRoute | 当 onGenerateRoute 也无法生成路由时的回调函数 |
+| routes | 此组件的路由表 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
+
 ## CupertinoTextField
 
 ![CupertinoTextField](https://flutter.io/images/widget-catalog/cupertino-textfield.png)
