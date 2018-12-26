@@ -641,11 +641,68 @@ CupertinoSliverNavigationBar 必须放置在 sliver 组如 [CustomScrollView](#C
 
 如果没有提供 largeTitle 组件，且 automaticallyImplyTitle 为 true（默认为 true），则其会自动为 [CupertinoPageRoute](#CupertinoPageRoute) 的标题文本。
 
-当 transitionBetweenRoutes 为 true 时，如果正在转换的路径也具有 CupertinoNavigationBar或CupertinoSliverNavigationBar 且transitionBetweenRoutes设置为true，则此导航栏将在路径顶部而不是在其中进行转换。如果transitionBetweenRoutes为true，则Widget参数都不能在其子树中包含任何GlobalKey，因为这些小部件将同时存在于树中的多个位置。
+当 transitionBetweenRoutes 为 true 时，如果正在转换的路径也具有 [CupertinoNavigationBar](#CupertinoNavigationBar) 或 CupertinoSliverNavigationBar 且 transitionBetweenRoutes 设置为 true，则此导航栏将在路由顶级而不是在其中进行转换。如果 transitionBetweenRoutes 为 true，则 [Widget](#Widget) 参数都不能在其子树中包含任何 [GlobalKey](#GlobalKey)，因为这些组件将同时存在于树中的多个位置。
 
-默认情况下， 每个PageRoute中只应存在一个CupertinoNavigationBar或CupertinoSliverNavigationBar以支持默认转换。使用transitionBetweenRoutes或heroTag可以自定义每个路径的多个导航栏的过渡行为。
+默认情况下， 每个 [PageRoute](#PageRoute) 中只应存在一个 [CupertinoNavigationBar](#CupertinoNavigationBar) 或 CupertinoSliverNavigationBar 以支持默认转换。使用 transitionBetweenRoutes 或 heroTag 可以自定义每个路径的多个导航栏的过渡行为。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| actionsForegroundColor | 用于导航栏中 leading 和 trailing 组件的文本和图标的默认颜色 |
+| automaticImplyLeading | 控制是否应该尝试暗示 leading 组件为 null |
+| automaticImplyTitle | 控制是否应该尝试暗示 largeTitle 组件为 null |
+| backgroundColor | 导航栏的背景颜色。如果它包含透明度，标签栏将自动对其背后的内容产生模糊效果 |
+| border | 导航栏的边框。默认情况下，渲染单个像素底部边框 |
+| heroTag | 如果 transitionBetweenRoutes 为 true，则标记导航栏的 Hero 组件 |
+| largeTitle | 导航栏的标题 |
+| leading | 放置在导航栏开头的组件。通常是正常页面的后退按钮或完整页面对话框的取消按钮 |
+| middle | 放置在导航栏中间的组件，不是 largeTitle |
+| opaque | 如果导航栏的背景颜色没有透明度，则为 true |
+| padding | 填充导航栏的内容 |
+| previousPageTitle | 自动隐含后退按钮时手动指定上一个路由的标题 |
+| trailing | 放置在导航栏末尾的组件。通常在页面上执行其他操作，例如搜索或编辑功能 |
+| transitionBetweenRoutes | 是否在导航栏之间转换 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
 
 ## CupertinoSliverRefreshControl
+
+实现 iOS 风格拉动以刷新内容控件的 sliver 组件。
+
+当在滚动视图中作为第一个 sliver 插入或插入到其他 sliver 后面以允许回弹时（例如 [CupertinoSliverNavigationBar](#CupertinoSliverNavigationBar)，此组件将：
+
+- 让用户通过传入的 builder 在过度滚动区域内绘制。
+- 当过度滚动的距离达到传递 refreshTriggerPullDistance 的值时触发提供的 onRefresh 函数。
+- 继续保持 refreshIndicatorExtent 空间量，以便 builder 在 onRefresh 进程返回的 [Future](#Future) 中继续绘制。
+- 一旦 onRefresh [Future](#Future) 完成，就滚动离开。
+
+builder 函数将在调用时通知当前的 [RefreshIndicatorMode](#RefreshIndicatorMode)，但在没有可用空间且无需构建任何东西时且处于 RefreshIndicatorMode.inactive 状态时除外。否则，当过渡滚动的空间量改变时将持续调用 builder 函数，因为 sliver 在 onRefresh 任务已经完成后滚动离开，等等。
+
+直到前一次刷新完成并且指示器 sliver 已经缩回至少 90％ 前只有一次刷新能触发。
+
+只能用于向下滚动的垂直列表。换句话说，使用 [ClampingScrollPhysics](#ClampingScrollPhysics) 的列表无法触发刷新 。
+
+在典型的应用程序中，应将此 sliver 插入应用栏 sliver （如 [CupertinoSliverNavigationBar](#CupertinoSliverNavigationBar)）和主要可滚动内容的 sliver 之间。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| builder | 当此 sliver 的尺寸或状态改变时调用的构建器函数 |
+| onRefresh | 由 refreshTriggerPullDistance 拉取时调用的回调 |
+| refreshIndicatorExtent | 当 onRefresh 的 [Future](#Future) 仍然在运行时，刷新指示器 sliver 将保持的空间量 |
+| refreshTriggerPullDistance | 触发重新加载必须的过度滚动量 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| createState | 在树中的给定位置为此组件创建可变状态 |
 
 ## CupertinoSwitch
 
@@ -835,6 +892,23 @@ controller 还可以控制选择并组成区域（观察文本更改，选择，
 | debugFillProperties | 添加与节点关联的额外属性 |
 
 ## CupertinoThumbPainter
+
+绘制 iOS 风格的滑块。
+
+由 [CupertinoSwitch](#CupertinoSwitch) 和 [CupertinoSlider](#CupertinoSlider) 使用。
+
+### 属性
+
+| 属性 | 功能 |
+| ------ | ------ |
+| color | thumb 内部的颜色 |
+| shadowColor | thumb 阴影的颜色 |
+
+### 方法
+
+| 名称 | 功能 |
+| ------ | ------ |
+| paint | 将 thumb 绘制在给定矩形的给定画布上 |
 
 ## CupertinoTimerPicker
 
